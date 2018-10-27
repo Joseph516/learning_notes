@@ -10,8 +10,12 @@
 - git reset HEAD file_name: 撤销暂存版本。
 - git rm file_name, then commit: delete 版本库和工作区的文件
 
+### 远程库
+- creat ssh key and connect github
+- git remote add origin <ssh link>: connect repository.
+- git push -u prigin master: push files to origin repository.
 ### concept
 - 工作区/版本库（包括暂存区和分支）
 - stage: temporary storage.暂存区。
 - branch: incuding master, and others 分支.
-
+- origin: github repository name, which can be modified.
