@@ -7,6 +7,7 @@
 - git reflog: 记录每一次命令。
 
 ### concept
-- stage: temporary storage.
+- 工作区/版本库（包括暂存区和分支）
+- stage: temporary storage.暂存区。
 - branch: incuding master, and others 分支.
 
