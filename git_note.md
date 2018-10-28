@@ -25,6 +25,7 @@
 - git branch: 查看所有分区。
 - git merge <branch>: 合并分支。
 - git branch -d <branch>: 删除分支。
+- 解决冲突问题。
 
 
 ### concept
