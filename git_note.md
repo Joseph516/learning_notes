@@ -18,6 +18,7 @@
 
 ### 分支管理
 分支管理可以在原来主线上生成，新生成的分支不影响主线，分支可以随时合并上去，速度极快。
+在分支上修改，必须合并之后到master，才能在master上体现。
 - git checkout -b <branch>: 新建分区并切换。
 - git branch <branch>: 新建分区。
 - git checkout <branch>: 切换分区。
