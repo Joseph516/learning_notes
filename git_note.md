@@ -12,21 +12,35 @@
 
 ### 远程库
 - creat ssh key and connect github
-- git remote add origin <ssh link>: connect repository.
-- git push -u prigin master: push files to origin repository.
-- git clone <ssh link>: 克隆，ssh速度较http快
+- git remote add origin [ssh link]: connect repository.
+- git push -u origin master: push files to origin repository.
+- git clone [ssh link]: 克隆，ssh速度较http快
+- git push origin [branch]: 推送分支到远程。
+- git remote -v: 查看远程库信息，本地新建的分支如果不推送到远程，对其他人就是不可见的；
+- git push origin [branch]: 从本地推送分支，如果推送失败，先用git pull抓取远程的新提交；
+- git checkout -b [branch] origin/[branch]: 在本地创建和远程分支对应的分支，本地和远程分支的名称最好一致；
+- git branch --set-upstream [branch] origin/[branch]：建立本地分支和远程分支的关联
+- 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
 
 ### 分支管理
-分支管理可以在原来主线上生成，新生成的分支不影响主线，分支可以随时合并上去，速度极快。
-在分支上修改，必须合并之后到master，才能在master上体现。
-- git checkout -b <branch>: 新建分区并切换。
-- git branch <branch>: 新建分区。
-- git checkout <branch>: 切换分区。
+分支管理可以在原来主线上生成，新生成的分支不影响主线，分支可以随时合并上去，速度极快。  
+在分支上修改，必须合并之后到master，才能在master上体现。  
+注意master应该是非常稳定的，通常最好在分支下操作，版本发布才同步到master上。
+- git checkout -b [branch]: 新建分区并切换。
+- git branch [branch]: 新建分区。
+- git checkout [branch]: 切换分区。
 - git branch: 查看所有分区。
-- git merge <branch>: 合并分支。
-- git branch -d <branch>: 删除分支。
+- git merge [branch]: 合并分支。
+- git merge --no-ff [branch]: 不使用fast forward合并，否则会丢失分支信息。
+- git branch -d [branch]: 删除分支。
+- git branch -D [branch]: 强行删除美亚合并的分支。
 - 分支与主分支均有修改，在合并上容易出现冲突，需要单独解决才能合并merge。
 
+- git stash: 临时储存现场。
+- git stash list: 查看储存列表。
+- git stash apply: 恢复现场，但不清理stash。
+- git stash drop: 删除储存stash 
+- git stash pop: 恢复并删除。
 
 ### concept
 - 工作区/版本库（包括暂存区和分支）
