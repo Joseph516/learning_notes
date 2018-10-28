@@ -25,10 +25,7 @@
 - git branch: 查看所有分区。
 - git merge <branch>: 合并分支。
 - git branch -d <branch>: 删除分支。
-<<<<<<< HEAD
-=======
 - 分支与主分支均有修改，在合并上容易出现冲突，需要单独解决才能合并merge。
->>>>>>> dev
 
 
 ### concept
