@@ -27,6 +27,10 @@
 - git branch -d <branch>: 删除分支。
 - 分支与主分支均有修改，在合并上容易出现冲突，需要单独解决才能合并merge。
 
+### tag
+- git tag [name]：设置标签，对应的是commit，默认HEAD，也可以指定对应的commit id。
+- git tag：查看标签
+- git tag -a <tagname> -m "blablabla..."：指定标签信息。
 
 ### concept
 - 工作区/版本库（包括暂存区和分支）
