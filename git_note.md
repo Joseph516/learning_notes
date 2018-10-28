@@ -42,6 +42,11 @@
 - git stash drop: 删除储存stash 
 - git stash pop: 恢复并删除。
 
+### tag
+- git tag [name]：设置标签，对应的是commit，默认HEAD，也可以指定对应的commit id。
+- git tag：查看标签
+- git tag -a <tagname> -m "blablabla..."：指定标签信息。
+
 ### concept
 - 工作区/版本库（包括暂存区和分支）
 - stage: temporary storage.暂存区。
