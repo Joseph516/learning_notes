@@ -22,6 +22,11 @@
 - git branch --set-upstream [branch] origin/[branch]：建立本地分支和远程分支的关联
 - 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
 
+### Fork
+- fork:从其它用户的仓库克隆到自身仓库，可以自由操作。如果需要合并到原来仓库实现协同工作，可以使用pull request命令。
+- 同步更新原仓库内容：使用New pull request进行对比，注意箭头base fork和head fork方向。若需要更新对方内容，head为对方仓库。
+
+
 ### 分支管理
 分支管理可以在原来主线上生成，新生成的分支不影响主线，分支可以随时合并上去，速度极快。  
 在分支上修改，必须合并之后到master，才能在master上体现。  
