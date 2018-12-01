@@ -12,6 +12,7 @@
 
 ### 远程库
 - creat ssh key and connect github
+- git remote rm orgin: 取消当前origin的连接。
 - git remote add origin [ssh link]: connect repository.
 - git push -u origin master: push files to origin repository.
 - git clone [ssh link]: 克隆，ssh速度较http快
