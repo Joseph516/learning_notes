@@ -1,4 +1,19 @@
+# Git 学习笔记
+
+### concept
+
+- 工作区/版本库（包括暂存区和分支）
+
+- stage: temporary storage.暂存区。
+
+- branch: incuding master, and others 分支.
+
+- origin: github repository name, which can be modified.
+
+  ​			![](pic/git mode.jpeg)
+
 ### command
+
 - git add : add file
 - git commit -m "xxx" : commit file with a comment
 - git reset --hard HEAD^ : return back to last version.版本库
@@ -52,9 +67,3 @@
 - git tag [name]：设置标签，对应的是commit，默认HEAD，也可以指定对应的commit id。
 - git tag：查看标签
 - git tag -a [tagname] -m "blablabla..."：指定标签信息。
-
-### concept
-- 工作区/版本库（包括暂存区和分支）
-- stage: temporary storage.暂存区。
-- branch: incuding master, and others 分支.
-- origin: github repository name, which can be modified.
