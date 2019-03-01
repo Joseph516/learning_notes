@@ -10,7 +10,7 @@
 
 - origin: github repository name, which can be modified.
 
-  ​			![](pic/git mode.jpeg)
+![git mode](assets/git mode.jpeg)
 
 ### command
 
@@ -24,6 +24,7 @@
 - git checkout -- file_name: 撤销工作区的修改。针对没有提交到暂存区的修改。
 - git reset HEAD file_name: 撤销暂存版本。
 - git rm file_name, then commit: delete 版本库和工作区的文件
+- git rm -r --cached file_name + git commit : 取消对文件进行git记录，配合.gitignore使用
 
 ### 远程库
 - creat ssh key and connect github

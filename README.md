@@ -12,3 +12,17 @@
 
   介绍了使用GPU，如AWS进行深度学习的一般配置。
 
+- [vim学习笔记](vim_note.md)
+
+  vim插件安装，基本操作。
+
+- [python学习笔记](python.md)
+
+  单元测试，matlab与python交互。
+
+- [SQL学习笔记](SQL.md)
+
+- [markdown学习笔记](markdown.md)
+
+- [JUCE](JUCE.md)
+
