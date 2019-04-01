@@ -61,6 +61,21 @@ virtualenv env
 python3 -m venv env
 ```
 
+## 并行计算
+
+https://joblib.readthedocs.io/en/latest/
+
+## 软件包管理PyPi
+
+使用setuptools工具，编写setup.py文件, https://pypi.org/project/setuptools/
+
+1. 直接提交到pypi服务器，可以使用pip下载安装。
+2. 本地安装，只能在本地使用。http://www.cnblogs.com/streakingBird/p/4056765.html
+
+### pip
+
+- 查看软件包更新：pip list --outdate
+
 # 基本知识
 
 ### “*”符号的意义
@@ -114,6 +129,10 @@ In [3]: foob(*fooa())
 if __name__ == "__main__":
     function()
 ```
+
+## IPython
+
+
 
 # 遇到的问题
 

@@ -1,5 +1,7 @@
 # Git 学习笔记
 
+## 基本操作
+
 ### concept
 
 - 工作区/版本库（包括暂存区和分支）
@@ -38,10 +40,23 @@
 - git checkout -b [branch] origin/[branch]: 在本地创建和远程分支对应的分支，本地和远程分支的名称最好一致；
 - git branch --set-upstream [branch] origin/[branch]：建立本地分支和远程分支的关联
 - 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+- git remote rename origin mine: 将远程仓库更名为“mine”
 
 ### Fork
 - fork:从其它用户的仓库克隆到自身仓库，可以自由操作。如果需要合并到原来仓库实现协同工作，可以使用pull request命令。
+
 - 同步更新原仓库内容：使用New pull request进行对比，注意箭头base fork和head fork方向。若需要更新对方内容，head为对方仓库。
+
+- 添加原仓库的url，注意fork后origin表示的是自己这边的仓库，不是原仓库。
+
+  ```bash
+  # upstream表示原始库，url为对应地址。
+  git remote add upstream url
+  # 拉取原仓库代码合并到自己本地的仓库master
+  git pull upstream master
+  # 更新自己的远程库
+  git push prigin master
+  ```
 
 
 ### 分支管理
@@ -49,22 +64,69 @@
 在分支上修改，必须合并之后到master，才能在master上体现。  
 注意master应该是非常稳定的，通常最好在分支下操作，版本发布才同步到master上。
 - git checkout -b [branch]: 新建分区并切换。
+
 - git branch [branch]: 新建分区。
+
 - git checkout [branch]: 切换分区。
+
 - git branch: 查看所有分区。
+
 - git merge [branch]: 合并分支。
+
 - git merge --no-ff [branch]: 不使用fast forward合并，否则会丢失分支信息。
+
 - git branch -d [branch]: 删除分支。
+
 - git branch -D [branch]: 强行删除没有合并的分支。
+
 - 分支与主分支均有修改，在合并上容易出现冲突，需要单独解决才能合并merge。
 
 - git stash: 临时储存现场。
+
 - git stash list: 查看储存列表。
+
 - git stash apply: 恢复现场，但不清理stash。
+
 - git stash drop: 删除储存stash 
+
 - git stash pop: 恢复并删除。
+
+#### 远程分支
+
+- 查看远程分支。git branch -r
+
+- 删除远程分支
+
+  git branch -r -d origin/[branch]
+
+  git push origin: [branch]
 
 ### tag
 - git tag [name]：设置标签，对应的是commit，默认HEAD，也可以指定对应的commit id。
 - git tag：查看标签
 - git tag -a [tagname] -m "blablabla..."：指定标签信息。
+
+## 提交规范
+
+参考：<http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html>
+
+每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。
+
+Header只能是下面7个类别：
+
+- feat：新功能（feature）
+- fix：修补bug
+- docs：文档（documentation）
+- style： 格式（不影响代码运行的变动）
+- refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+- test：增加测试
+- chore：构建过程或辅助工具的变动
+
+### 进阶操作
+
+### 压制commit：git rebase
+
+- 将最后3个commit合并。
+
+![1554116058591](assets/1554116058591.png)
+
