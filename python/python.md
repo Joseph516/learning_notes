@@ -40,6 +40,8 @@ pip freeze
 
 Tutorial：https://realpython.com/python-virtual-environments-a-primer/
 
+conda创建教程：<https://blog.csdn.net/u012343179/article/details/76146815>
+
 ```shell
 # 指定python版本创建环境
 virtualenv --no-site-packages -p /usr/bin/python3.5 env
@@ -49,6 +51,10 @@ source venv/bin/activate
 source venv/bin/deactivate
 # 安装软件包
 pip install package_name
+
+# 使用conda安装，包的安装位置在anaconda的envs中。
+conda create -n name python=具体版本 其它库如numpy
+source activate name
 ```
 
 使用venv方法创建：
@@ -131,6 +137,31 @@ if __name__ == "__main__":
 ```
 
 ## IPython
+
+## Jupyter notebook
+
+### 安装插件
+
+1. 安装目录功能：pip install jupyter_contrib_nbextensions
+2. 配置nbextension：jupyter contrib nbextension install --user --skip-running-check
+3. 启动jupyter notebook配置
+
+### 添加内核
+
+```shell
+# 查看内核
+jupyter kernelspec list
+# 移除
+jupyter kernelspec remove python2
+
+# 安装
+path/to/python2 -m pip install ipykernel
+# 添加内核 --name [name]可以取名
+path/to/python2 -m ipykernel install <options>
+
+path/to/python3 -m pip install ipykernel
+path/to/python3 -m ipykernel install <options>
+```
 
 
 

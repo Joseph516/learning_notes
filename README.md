@@ -1,16 +1,21 @@
-# This is my learning notes repository.
-作为菜鸟码农，在自己的工作学习经历中遇到了大大小小的问题。这里我将主要内容记录下来，既是督促自己，也希望能给其他人带来帮助。
+# Learning Notes
+作为菜鸟码农，在自己的工作学习经历中遇到了大大小小的问题。
+
+这里我将主要内容记录下来，既是督促自己，也希望能给其他人带来帮助。
+
+- [linux](Linux/linux_note.md)
+
+  记录makefile, gcc/g++, gdb调试大型程序, 单元测试等。
+
 - [git learning course](git/git_note.md)
 
   主要介绍git的常见操作功能，包括commit、pull、fork等功能。
 
-- [ubuntu hints](ubuntu_hints.md)
+- [coding tips](coding_tips.md)
 
-  主要介绍ubuntu使用功能，如文件操作、软件安装等。
+  记录python和C/C++等变成的心得及总结
 
-- [GPU使用](GPU_ML_help.md)
-
-  介绍了使用GPU，如AWS进行深度学习的一般配置。
+  如vscode开发配置，使用GPU，如AWS进行深度学习的一般配置。
 
 - [vim学习笔记](vim_note.md)
 
