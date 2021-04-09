@@ -12,7 +12,7 @@
 
 - origin: github repository name, which can be modified.
 
-![git mode](assets/git mode.jpeg)
+![git mode](assets/git_mode.png)
 
 ### command
 
@@ -30,6 +30,10 @@
 
 ### 远程库
 - creat ssh key and connect github
+    ```sh
+    # 生成ssh key，位置在 ~./ssh
+    ssh-keygen -t rsa -C "youremail@example.com"
+    ```
 - git remote rm orgin: 取消当前origin的连接。
 - git remote add origin [ssh link]: connect repository.
 - git push -u origin master: push files to origin repository.

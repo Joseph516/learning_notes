@@ -114,7 +114,7 @@ target: dependencies
 
 make工具，可以生成makefile、vs等IDE工程文件。
 
-Tutorials：https://www.hahack.com/codes/cmake/
+cmake Tutorials：https://www.hahack.com/codes/cmake/
 
 vscode+cmake+gdb构建大型工程项目：https://zhuanlan.zhihu.com/p/45528705?utm_source=wechat_session&utm_medium=social&utm_oi=687576648198914048
 
@@ -166,6 +166,13 @@ add_executable(chess  # 输出名为chess的可执行文件
 #    ./src/main.cpp
 #    ./src/utils.cpp
 # )
+```
+
+```cmake
+# 线程相关选项
+find_package(Threads REQUIRED)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread") # CXX表示C++
+# SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread") # 对应C
 ```
 
 
@@ -220,6 +227,14 @@ gdb命令基本上可以使用首字母缩写，如r代替run。
 
   gdb将变量的值保存在伪变量$<number>中，可以直接print $1。最后一次操作的结果总是$，倒数第二次操作是$$.
 
+  - 打印小数正数，浮点数等
+
+    p/t v // 将v转化成二进制输出
+
+    p/x v // 转化成十六进制输出
+
+    p/f v // 转化成浮点数输出
+
   print array_name[0]@number：打印出指定数目的数组内容。
 
 - list：列出周围代码，可以用行号和函数跳转至指定代码。
@@ -252,7 +267,84 @@ gdb命令基本上可以使用首字母缩写，如r代替run。
 
 ElectricFence和valgrind
 
-### 如何结合malefile调试大型程序???
+### 如何结合malefile调试大型程序
+
+#### 命令行使用gdb调试
+
+1. 配置好makefile的debug
+2. 使用gdb运行make生成的debug文件。
+3. 打断点：目标文件+断点位置，如b main.cpp:1(即在main.cpp文件的第一行打断点)。
+
+#### vscode使用launch和task配置进行调试
+
+1. 先配置合适的task.json文件，即具体需要执行或调试的命令。
+2. 配置launch.json配置启动文件。
+3. 注意在debug时需要在makefile文件中配置好debug，否则无法打断点。
+
+task.json
+
+```json
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean", // 任务名称
+            "command": "make",
+            "args": ["clean"],
+            "type": "shell"
+        },
+        {
+            "label": "build-debug",
+            "command": "make",
+            "args": ["build"],
+            "type": "shell"
+        },
+        {
+            "label": "build-all", // 依次调试多个任务，若不配置此，则每次launch只会启动一个任务。
+            "dependsOn": [
+            "clean",
+            "build-debug"
+            ]
+        }
+    ]
+}
+```
+
+launch.json
+
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "makefile debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/monitor", // 调试的程序位置
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}", // 当前项目的路径，即用vscode打开时的位置
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build-all", // 第一次开始调试的任务，见task.json
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
+```
 
 ### 参考
 

@@ -1,5 +1,7 @@
 # JUCE
 
+Audio Processing Programming Framwork
+
 # 编译问题
 
 - 提示无法找到aeffect.h文件
