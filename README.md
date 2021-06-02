@@ -10,6 +10,9 @@
 
   单元测试，matlab与python交互。
 
+- [go](go/go_note.md)
+
+
 - [linux](Linux/linux_note.md)
 
   记录makefile, gcc/g++, gdb调试大型程序, 单元测试等。

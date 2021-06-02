@@ -8,6 +8,9 @@ books/
 *.pdf
 *.mobi
 src_original/
+go/src/gopl.io/
+.DS_Store
+**/*.out
 
 *.suo
 *.user

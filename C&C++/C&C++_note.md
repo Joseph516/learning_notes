@@ -127,6 +127,103 @@ auto get_name() const -> std::string const& { return name; }
 std::string const& get_name() {return name;}
 ```
 
+## 数据结构
+
+### 优先级队列
+
+优先级队列的原理是堆，最大堆：每一个节点的值大于其子节点；最小堆相反。
+
+头文件`#include <queue>`, 他和`queue`不同的就在于我们可以自定义其中数据的优先级, 让优先级高的排在队列前面,优先出队。
+
+定义：`priority_queue<Type, Container, Functional>`
+Type 就是数据类型，Container 就是容器类型（Container必须是用数组实现的容器，比如vector,deque等等，但不能用 list。STL里面默认用的是vector），Functional 就是比较的方式，当需要用自定义的数据类型时才需要传入这三个参数，使用基本数据类型时，只需要传入数据类型，默认是大顶堆。
+
+```c++
+// 升序队列，最小堆
+priority_queue <int,vector<int>,greater<int> > q;
+// 降序队列，最大堆
+priority_queue <int,vector<int>,less<int> >q;
+
+// 自定义，重写仿函数，不能用lambda函数
+struct cmp {
+    // 相当于 greater<int>
+    bool operator() (const int& a, const int& b) const { return a > b; }
+};
+std::priority_queue<int, std::vector<int>, cmp> q;
+```
+
+### unordered_map
+
+> hash_map库没有加入c++11
+
+C++ 11标准中加入了[unordered](https://zh.cppreference.com/w/cpp/container/unordered_map)系列的容器。unordered_map记录元素的hash值，根据hash值判断元素是否相同。map相当于java中的TreeMap，unordered_map相当于HashMap。
+
+时间复杂度：unordered_map>hash_map>map。空间复杂度：hash_map<unorderd_map<map
+
+**unordered_map与map的对比：**
+
+unordered_map存储时是根据key的hash值判断元素是否相同，即内部元素是无序的，而map中的元素是按照二叉搜索树存储（用红黑树实现），进行中序遍历会得到有序遍历。所以使用时map的key需要定义operator<。而unordered_map需要定义hash_value函数并且重载operator==。但是很多系统内置的数据类型都自带这些。
+
+总结：结构体用map重载<运算符，结构体用unordered_map重载==运算符。
+
+**unordered_map与hash_map对比：**
+
+unordered_map原来属于boost分支和std::tr1中，而hash_map属于非标准容器。
+unordered_map感觉速度和hash_map差不多，但是支持string做key，也可以使用复杂的对象作为key。
+unordered_map编译时gxx需要添加编译选项：--std=c++11
+
+**迭代器**
+
+```C++
+#include <unordered_map>
+unordered_map<key, T>::iterator it;
+(*it).first;
+(*it).second;
+```
+
+**insert元素**
+
+```c++
+#include <string>
+#include <iostream>
+#include <unordered_map>
+ 
+int main ()
+{
+    std::unordered_map<int, std::string> dict = {{1, "one"}, {2, "two"}};
+    dict.insert({3, "three"});
+    dict.insert(std::make_pair(4, "four"));
+    dict.insert({{4, "another four"}, {5, "five"}});
+ 
+    bool ok = dict.insert({1, "another one"}).second;
+    std::cout << "inserting 1 -> \"another one\" " 
+              << (ok ? "succeeded" : "failed") << '\n';
+ 
+    std::cout << "contents:\n";
+    for(auto& p: dict)
+        std::cout << " " << p.first << " => " << p.second << '\n';
+}
+// inserting 1 -> "another one" failed
+// contents:
+// 5 => five 
+// 2 => two
+// 1 => one
+// 3 => three
+// 4 => four
+```
+
+**删除元素**
+
+使用erase，删除元素可以直接传入被删除元素和key，也可以传入被删除元素的iterator。
+
+#### 其它同类数据结构
+
+其它类似的数据结构包括：
+
+- unordered_set：无序集合。
+
+- set和map为对应有序集合和映射。
+
 ## OOP语法
 
 ### 1. 类成员的访问权限
