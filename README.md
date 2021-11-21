@@ -13,7 +13,7 @@
 - [go](go/go_note.md)
 
 
-- [linux](Linux/linux_note.md)
+- [linux](linux/linux_note.md)
 
   记录makefile, gcc/g++, gdb调试大型程序, 单元测试等。
 
@@ -39,4 +39,4 @@
 
 - [markdown](markdown.md)
 
-- [JUCE](JUCE.md)
+- [JUCE](juce.md)
