@@ -2,6 +2,10 @@
 
 编程语言、基本开发工具的相关笔记。
 
+- [Machiche Learning & Deep Learning](ai/ai.md)
+
+  理论概念、工具使用：tensorflow及pytorch、炼丹秘诀。
+
 - [c++](c&c++/c&c++_note.md)
 
   基本语法、oop语法与设计。
