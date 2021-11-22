@@ -4,28 +4,26 @@
 
 ### 指针
 
-1. 定义： int* p = &a   p表示地址，相当去&a， *p表示指向对象值，相当于a。
-2. 数组指针：int* p[n] = &a[n]
+1. 定义： int* p = &a p 表示地址，相当去&a， *p 表示指向对象值，相当于 a。
+2. 数组指针：int\* p[n] = &a[n]
 
 3. 指向指针的指针：
 
 ![](assets/clip_image004.jpg)
 
- 
-
 ![](assets/clip_image005.png)
 
 4. 指针作为返回值
 
-这里返回的是a/b的地址
+这里返回的是 a/b 的地址
 
-这里a，b不能是局部变量，需要时外部变量或static局部变量
+这里 a，b 不能是局部变量，需要时外部变量或 static 局部变量
 
 ![](assets/clip_image006.png)
 
 ### const
 
-C语言定义数组不能使用const定义（C++可以），需要改成#define
+C 语言定义数组不能使用 const 定义（C++可以），需要改成#define
 
 ```c
 const int num = 10;
@@ -34,7 +32,7 @@ int a[num]; // error
 int a[num]; // right
 ```
 
-const类和const成员函数
+const 类和 const 成员函数
 
 ![image-20191228163727268](assets/image-20191228163727268.png)
 
@@ -49,11 +47,11 @@ std::cout << "Running time(s):" << (double)(end - start) / CLOCKS_PER_SEC << end
 // CLOCKS_PER_SEC:CPU一秒钟运行的时钟周期数
 ```
 
-### main函数参数调用
+### main 函数参数调用
 
 可以在执行程序时，获取命令行的输入。
 
-argc表示输入的个数，输入用空格相隔。 argv[]储存输入的参数。
+argc 表示输入的个数，输入用空格相隔。 argv[]储存输入的参数。
 
 ```c++
 int main(int argc, const char *argv[]) {
@@ -77,7 +75,7 @@ hello
 
 ### 内存释放
 
-C语言中是free函数，可以释放由 [malloc()](http://c.biancheng.net/cpp/html/137.html)、[calloc()](http://c.biancheng.net/cpp/html/134.html)、[realloc()](http://c.biancheng.net/cpp/html/2859.html) 分配的内存空间，以便其他程序再次使用。单纯静态数据的内存不能释放。类似于C++中的new与delete操作。
+C 语言中是 free 函数，可以释放由 [malloc()](http://c.biancheng.net/cpp/html/137.html)、[calloc()](http://c.biancheng.net/cpp/html/134.html)、[realloc()](http://c.biancheng.net/cpp/html/2859.html) 分配的内存空间，以便其他程序再次使用。单纯静态数据的内存不能释放。类似于 C++中的 new 与 delete 操作。
 
 ```c
 #include <stdlib.h>
@@ -95,25 +93,25 @@ ptr = NULL; // 手动重置指针，防止误用。
 
 临时对象的维护 ( 创建和销毁 ) 对性能有严重影响。
 
-````c++
-void process_lvalue(int& i) { 
- std::cout << "LValue processed: " << i << std::endl; 
-} 
- 
-void process_rvalue(int&& i) { 
- std::cout << "RValue processed: " << i << std::endl; 
-} 
- 
-int main() { 
- int a = 0; 
- process_lvalue(a); 
- process_rvalue(1); 
+```c++
+void process_lvalue(int& i) {
+ std::cout << "LValue processed: " << i << std::endl;
+}
+
+void process_rvalue(int&& i) {
+ std::cout << "RValue processed: " << i << std::endl;
+}
+
+int main() {
+ int a = 0;
+ process_lvalue(a);
+ process_rvalue(1);
  process_rvalue(std::move(a));  // move semantics
 }
 // 结果
-LValue processed: 0 
+LValue processed: 0
 RValue processed: 1
-````
+```
 
 ### 尾部返回类型标注
 
@@ -134,7 +132,7 @@ std::string const& get_name() {return name;}
 头文件`#include <queue>`, 他和`queue`不同的就在于我们可以自定义其中数据的优先级, 让优先级高的排在队列前面,优先出队。
 
 定义：`priority_queue<Type, Container, Functional>`
-Type 就是数据类型，Container 就是容器类型（Container必须是用数组实现的容器，比如vector,deque等等，但不能用 list。STL里面默认用的是vector），Functional 就是比较的方式，当需要用自定义的数据类型时才需要传入这三个参数，使用基本数据类型时，只需要传入数据类型，默认是大顶堆。
+Type 就是数据类型，Container 就是容器类型（Container 必须是用数组实现的容器，比如 vector,deque 等等，但不能用 list。STL 里面默认用的是 vector），Functional 就是比较的方式，当需要用自定义的数据类型时才需要传入这三个参数，使用基本数据类型时，只需要传入数据类型，默认是大顶堆。
 
 ```c++
 // 升序队列，最小堆
@@ -152,23 +150,23 @@ std::priority_queue<int, std::vector<int>, cmp> q;
 
 ### unordered_map
 
-> hash_map库没有加入c++11
+> hash_map 库没有加入 c++11
 
-C++ 11标准中加入了[unordered](https://zh.cppreference.com/w/cpp/container/unordered_map)系列的容器。unordered_map记录元素的hash值，根据hash值判断元素是否相同。map相当于java中的TreeMap，unordered_map相当于HashMap。
+C++ 11 标准中加入了[unordered](https://zh.cppreference.com/w/cpp/container/unordered_map)系列的容器。unordered_map 记录元素的 hash 值，根据 hash 值判断元素是否相同。map 相当于 java 中的 TreeMap，unordered_map 相当于 HashMap。
 
 时间复杂度：unordered_map>hash_map>map。空间复杂度：hash_map<unorderd_map<map
 
-**unordered_map与map的对比：**
+**unordered_map 与 map 的对比：**
 
-unordered_map存储时是根据key的hash值判断元素是否相同，即内部元素是无序的，而map中的元素是按照二叉搜索树存储（用红黑树实现），进行中序遍历会得到有序遍历。所以使用时map的key需要定义operator<。而unordered_map需要定义hash_value函数并且重载operator==。但是很多系统内置的数据类型都自带这些。
+unordered_map 存储时是根据 key 的 hash 值判断元素是否相同，即内部元素是无序的，而 map 中的元素是按照二叉搜索树存储（用红黑树实现），进行中序遍历会得到有序遍历。所以使用时 map 的 key 需要定义 operator<。而 unordered_map 需要定义 hash_value 函数并且重载 operator==。但是很多系统内置的数据类型都自带这些。
 
-总结：结构体用map重载<运算符，结构体用unordered_map重载==运算符。
+总结：结构体用 map 重载<运算符，结构体用 unordered_map 重载==运算符。
 
-**unordered_map与hash_map对比：**
+**unordered_map 与 hash_map 对比：**
 
-unordered_map原来属于boost分支和std::tr1中，而hash_map属于非标准容器。
-unordered_map感觉速度和hash_map差不多，但是支持string做key，也可以使用复杂的对象作为key。
-unordered_map编译时gxx需要添加编译选项：--std=c++11
+unordered_map 原来属于 boost 分支和 std::tr1 中，而 hash_map 属于非标准容器。
+unordered_map 感觉速度和 hash_map 差不多，但是支持 string 做 key，也可以使用复杂的对象作为 key。
+unordered_map 编译时 gxx 需要添加编译选项：--std=c++11
 
 **迭代器**
 
@@ -179,31 +177,31 @@ unordered_map<key, T>::iterator it;
 (*it).second;
 ```
 
-**insert元素**
+**insert 元素**
 
 ```c++
 #include <string>
 #include <iostream>
 #include <unordered_map>
- 
+
 int main ()
 {
     std::unordered_map<int, std::string> dict = {{1, "one"}, {2, "two"}};
     dict.insert({3, "three"});
     dict.insert(std::make_pair(4, "four"));
     dict.insert({{4, "another four"}, {5, "five"}});
- 
+
     bool ok = dict.insert({1, "another one"}).second;
-    std::cout << "inserting 1 -> \"another one\" " 
+    std::cout << "inserting 1 -> \"another one\" "
               << (ok ? "succeeded" : "failed") << '\n';
- 
+
     std::cout << "contents:\n";
     for(auto& p: dict)
         std::cout << " " << p.first << " => " << p.second << '\n';
 }
 // inserting 1 -> "another one" failed
 // contents:
-// 5 => five 
+// 5 => five
 // 2 => two
 // 1 => one
 // 3 => three
@@ -212,7 +210,7 @@ int main ()
 
 **删除元素**
 
-使用erase，删除元素可以直接传入被删除元素和key，也可以传入被删除元素的iterator。
+使用 erase，删除元素可以直接传入被删除元素和 key，也可以传入被删除元素的 iterator。
 
 #### 其它同类数据结构
 
@@ -220,13 +218,13 @@ int main ()
 
 - unordered_set：无序集合。
 
-- set和map为对应有序集合和映射。
+- set 和 map 为对应有序集合和映射。
 
-## OOP语法
+## OOP 语法
 
 ### 1. 类成员的访问权限
 
-- 对于private成员，可以通过声明类的友元函数，进行访问。但是不推荐，会破坏类的封装性。
+- 对于 private 成员，可以通过声明类的友元函数，进行访问。但是不推荐，会破坏类的封装性。
 
 ![image-20191223125438808](assets/image-20191223125438808.png)
 
@@ -242,7 +240,7 @@ int main ()
 ClassName(ClassName&& ); // 右值引用，用来偷取临时变量中的资源，如内存
 ```
 
-作用：将t.buff中的内容转移至新对象，同时将t.buff的指针置为空。（当拷贝对象较大时建议使用移动拷贝构造函数。）
+作用：将 t.buff 中的内容转移至新对象，同时将 t.buff 的指针置为空。（当拷贝对象较大时建议使用移动拷贝构造函数。）
 
 否则两个指针指向同一内存，当其它一指针的内存释放时候，另一指针的操作会导致程序崩溃。
 
@@ -275,9 +273,7 @@ MyMovableClass &operator=(
 }
 ```
 
-
-
-#### default修饰
+#### default 修饰
 
 ![image-20191228170927048](assets/image-20191228170927048.png)
 
@@ -321,7 +317,7 @@ Box operator+(const Box&, const Box&);
 int& operator[](int i)
 {
   if( i > SIZE ){
-    cout << "索引超过最大值" <<endl; 
+    cout << "索引超过最大值" <<endl;
     // 返回第一个元素
     return arr[0];
     }
@@ -346,32 +342,32 @@ obj(rear parameters);
 
 ### 4. 继承
 
-继承通常是public和private，缺省情况下是private。
+继承通常是 public 和 private，缺省情况下是 private。
 
 构造顺序：先基类后派生类；析构顺序：先派生类后基类。
 
-可以使用```using Base::Bass;``` 来继承基类的构造函数，这是派生类不会自动生成构造函数。
+可以使用`using Base::Bass;` 来继承基类的构造函数，这是派生类不会自动生成构造函数。
 
-| 基类成员    | public  | private                          | protect |
-| ----------- | ------- | -------------------------------- | ------- |
-| public继承  | public  | 调用基类的公有和保护成员函数访问 | protect |
-| private继承 | private | no                               | private |
-| protect继承 | protect | no                               | protect |
+| 基类成员     | public  | private                          | protect |
+| ------------ | ------- | -------------------------------- | ------- |
+| public 继承  | public  | 调用基类的公有和保护成员函数访问 | protect |
+| private 继承 | private | no                               | private |
+| protect 继承 | protect | no                               | protect |
 
-成员函数或变量是否可以直接访问，如：```Base.func()```
-| 访问     | public | protected | private |
+成员函数或变量是否可以直接访问，如：`Base.func()`
+| 访问 | public | protected | private |
 | :------- | :----- | :-------- | :------ |
-| 同一个类 | yes    | yes       | yes     |
-| 派生类   | yes    | yes       | **no**  |
-| 外部的类 | yes    | no        | no      |
+| 同一个类 | yes | yes | yes |
+| 派生类 | yes | yes | **no** |
+| 外部的类 | yes | no | no |
 
-#### 4.1 override覆盖/重写
+#### 4.1 override 覆盖/重写
 
 派生类中定义的虚函数，如果与基类中定义的同名**虚函数有相同的形参列表**，则派生类版本将覆盖基类的版本。
 
-override之后，基类同名的函数被屏蔽，但可以使用```using Base::func()```使用
+override 之后，基类同名的函数被屏蔽，但可以使用`using Base::func()`使用
 
-```c++ 
+```c++
 struct B {
     virtual void f1(int) const;
     virtual void f2();
@@ -379,7 +375,7 @@ struct B {
 }
 
 struct D1 : B {
-    void f1(int) const override; 
+    void f1(int) const override;
     void f2(int) override; // error, 形参不一致
     void f3() override; // error, f3不是虚函数
     void f4() override; // B中无f4函数
@@ -459,11 +455,11 @@ class C: public B {
 
 纯虚函数：定义纯虚函数的类不能定义对象，只作为接口类。
 
-```virtual void func() = 0;```
+`virtual void func() = 0;`
 
 **析构问题**：
 
-当new派生类，并被基类指针所指时```B* ptr = new D;```：
+当 new 派生类，并被基类指针所指时`B* ptr = new D;`：
 
 基类析构函数需要定义成虚析构函数，保证先析构派生类再析构基类，防止出现资源泄露。
 
@@ -473,9 +469,9 @@ class C: public B {
 
 #### 5.1 自动类型转换
 
-src源类--->dst目标类
+src 源类--->dst 目标类
 
-方法1：在src类中定义目标类型转化运算符
+方法 1：在 src 类中定义目标类型转化运算符
 
 ```c++
 class Dst {
@@ -493,7 +489,7 @@ class Src {
 };
 ```
 
-方法2：在dst中定义源类对象作参数的构造函数
+方法 2：在 dst 中定义源类对象作参数的构造函数
 
 ```c++
 class Dst {
@@ -512,7 +508,7 @@ void Func(Dst d) {}
 int main(void) {
   Src s;
   Dst d1(s); // 直接构造
-  
+
   Dst d2 = s; // 自动类型转换，区别：拷贝构造函数时同类型对象
   Func(d2);   // 自动类型转换
 }
@@ -520,7 +516,7 @@ int main(void) {
 
 #### 5.2 禁止自动类型转换
 
-除了explicit，还可以用C++11的新功能delete
+除了 explicit，还可以用 C++11 的新功能 delete
 
 ![image-20191230194801937](assets/image-20191230194801937.png)
 
@@ -534,7 +530,7 @@ int main(void) {
 
 #### 6.1 函数模板
 
-避免函数重载带来的重复工作。不同于函数重载，模板函数只写了1次，而函数重载至少2次。
+避免函数重载带来的重复工作。不同于函数重载，模板函数只写了 1 次，而函数重载至少 2 次。
 
 ```c++
 template<typename 数据类型参数标识符>
@@ -547,7 +543,7 @@ template<typename T> T swap(T x, T y);
 // compare
 template<typename T> int compare(const T& x, const T& y);
 // 数据类型也可以使用默认值
-template<typename T0=float, typename T1, typename T2=float, 
+template<typename T0=float, typename T1, typename T2=float,
          typename T3, typename T4>
 T0 func(T1 v1, T2 v2, T3 v3, T4 v4) {...}
 ```
@@ -558,9 +554,9 @@ T0 func(T1 v1, T2 v2, T3 v3, T4 v4) {...}
 
 在类模板外定义成员函数与普通成员函数不同，需要注意：
 
-1. 方法一：在头文件末尾增加实现部分.cpp文件，如```#include "foo.tpp"```，注意是tpp文件
+1. 方法一：在头文件末尾增加实现部分.cpp 文件，如`#include "foo.tpp"`，注意是 tpp 文件
 
-2. 方法二：在.cpp文件末尾增加实例版本。只有实例化的版本才能被使用——因为只有它们真正被编译成了类代码；其它未实例化的版本，实际是没有定义的类。如：
+2. 方法二：在.cpp 文件末尾增加实例版本。只有实例化的版本才能被使用——因为只有它们真正被编译成了类代码；其它未实例化的版本，实际是没有定义的类。如：
 
    ```c++
    // .cpp中
@@ -568,8 +564,6 @@ T0 func(T1 v1, T2 v2, T3 v3, T4 v4) {...}
    template class Bar<int>;
    template class Bar<double>;
    ```
-
-   
 
 ```c++
 template <typename T> class class-name {
@@ -625,7 +619,7 @@ class Blob<int> name
 
 ![image-20191231163141269](assets/image-20191231163141269.png)
 
-## OOP设计
+## OOP 设计
 
 开闭原则：开放新功能，闭尽量不修改原有代码。
 
@@ -633,7 +627,7 @@ class Blob<int> name
 
 引出对象，确定对象边界：封装什么，暴露什么，隐藏什么。
 
-UML类图：分类对象关系，类的属性（隐藏与接口部分）等。
+UML 类图：分类对象关系，类的属性（隐藏与接口部分）等。
 
 **步骤：**
 
@@ -650,14 +644,13 @@ UML类图：分类对象关系，类的属性（隐藏与接口部分）等。
 3. 接口实现
    - 实现构造，析构等其它成员函数。
    - 实现必要的细化函数。
-   
 4. 变与不变
 
    - 多态，适当定义接口类。
 
    ![image-20191231163141269](assets/image-20200101173706306.png)
 
-**步骤2：**
+**步骤 2：**
 
 <img src="assets/image-20200101174102206.png" alt="image-20200101174102206" style="zoom:80%;" />
 
@@ -667,7 +660,7 @@ UML类图：分类对象关系，类的属性（隐藏与接口部分）等。
 
 **委托模式**
 
-**Bridge模式**
+**Bridge 模式**
 
 ### 3. 算法纵向拆分
 
@@ -696,7 +689,7 @@ for (Iterator p = begin; p != end; p++) {
 **实现通用的算法，使得数据与算法解耦。**
 
 - 算法仅与可用操作相关，抛开具体类型考虑算法，实现抽象运算，在算法与数据类型（存储）之间实现解耦。
-- 在C++中，可用操作是指操作符（*, ++, !=, >=），依赖于运算符重载，可用的操作是数据类型的抽象接口。
+- 在 C++中，可用操作是指操作符（\*, ++, !=, >=），依赖于运算符重载，可用的操作是数据类型的抽象接口。
 
 #### 抽象结构
 
@@ -726,11 +719,11 @@ for (Iterator p = begin; p != end; p++) {
 
 #### 适配器模式
 
-1. 可以利用数组或STL中的vecctor实现stack
+1. 可以利用数组或 STL 中的 vecctor 实现 stack
 
-2. 将stack定义为抽象类，子类继承并用不同的方法实现。有利于明确抽象界限，保证不同的模块的接口一致。
+2. 将 stack 定义为抽象类，子类继承并用不同的方法实现。有利于明确抽象界限，保证不同的模块的接口一致。
 
-   相当于在vector与stack之间增加了一种适配器类（Adapter Class）。
+   相当于在 vector 与 stack 之间增加了一种适配器类（Adapter Class）。
 
    ![image-20200116160817670](assets/image-20200116160817670.png)
 
@@ -764,29 +757,25 @@ for (Iterator p = begin; p != end; p++) {
 
   ![image-20200119221257757](assets/image-20200119221257757.png)
 
-  
-
 #### 案例：自动组卷系统
 
 要求：从题库中抽取题目，生成试卷。
 
-Builder设计模式。
+Builder 设计模式。
 
 ![image-20200120110356217](assets/image-20200120110356217.png)
-
-
 
 ## 回调函数
 
 ![1556067963605](assets/1556067963605.png)
 
-一般程序运行时，应用程序会常常通过API调用库里所预先准备好的函数。 但是有些库函数却要求应用程序先传给它一个函数，以在合适的时候调用完成任务。这个被传入的、后又被调用的函数就称为**回调函数**（callback function）。
+一般程序运行时，应用程序会常常通过 API 调用库里所预先准备好的函数。 但是有些库函数却要求应用程序先传给它一个函数，以在合适的时候调用完成任务。这个被传入的、后又被调用的函数就称为**回调函数**（callback function）。
 
-个人理解：中间函数（库函数）通常都是封装好了，只提供了对应的API，API中具有回调功能。这样通过应用层面自己编写回调函数，就会比什么函数都封装在中间函数里面更灵活。
+个人理解：中间函数（库函数）通常都是封装好了，只提供了对应的 API，API 中具有回调功能。这样通过应用层面自己编写回调函数，就会比什么函数都封装在中间函数里面更灵活。
 
-左边的call：把回调函数传入库函数的动作，称为登记回调函数。下方代码中传入getDouble或getQuadruple函数。
+左边的 call：把回调函数传入库函数的动作，称为登记回调函数。下方代码中传入 getDouble 或 getQuadruple 函数。
 
-右边的call：响应回调函数。下方代码中(*getEvenNumber)调用getDouble或getQuadruple函数。
+右边的 call：响应回调函数。下方代码中(\*getEvenNumber)调用 getDouble 或 getQuadruple 函数。
 
 ```c++
 int getDouble(int x) {
@@ -811,14 +800,14 @@ int main(int argc, const char *argv[]) {
 
   // 生成4k+1奇数
   std::cout << "4 Times odd number is:" << getOddNumber(x, getQuadruple) << std::endl;
-  
+
   return 0;
 }
 ```
 
 输出：
 
-``` shell
+```shell
 x is:3
 2 Times odd number is:7
 4 Times odd number is:13
@@ -826,12 +815,12 @@ x is:3
 
 ### 面向对象 Callback
 
-本Case为Boss读取并设置财务数据。
+本 Case 为 Boss 读取并设置财务数据。
 
-其中，Boss为应用程序，Fiance为中间函数，而CallBack为回调函数类。
+其中，Boss 为应用程序，Fiance 为中间函数，而 CallBack 为回调函数类。
 
-1. CallBack定义了一个接口，需要在应用对象Application函数中重写实现。
-2. 当Application调用库函数（里面有callback函数）时，需要将Application传入库函数，以便调用回调函数。
+1. CallBack 定义了一个接口，需要在应用对象 Application 函数中重写实现。
+2. 当 Application 调用库函数（里面有 callback 函数）时，需要将 Application 传入库函数，以便调用回调函数。
 
 ```C++
 // 参考https://blog.csdn.net/qq_29924041/article/details/74857469
@@ -872,7 +861,7 @@ class Application : public CallBack {
   public:
   Application() {
     // ! 关键，将自身传入库函数，相当于登记回调函数。
-    mcompute_ = new Compute(this); 
+    mcompute_ = new Compute(this);
   }
   ~Application() {
     if (mcompute_ != NULL) {
@@ -930,7 +919,7 @@ pthread_exit(status);
 
 Basic CMakeLists.txt file：
 
->注意：将`-DCMAKE_PREFIX_PATH=/absolute/path/to/libtorch`加入cmake编译选项中。
+> 注意：将`-DCMAKE_PREFIX_PATH=/absolute/path/to/libtorch`加入 cmake 编译选项中。
 
 ```cmake
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
@@ -960,9 +949,8 @@ endif (MSVC)
 
 - g++编译时出现问题。
 
-  原因及解决办法：主要是没有在cpp文件中实现构造函数和析构函数。(空的构造函数也要写，不能只在h文件中实现。)
+  原因及解决办法：主要是没有在 cpp 文件中实现构造函数和析构函数。(空的构造函数也要写，不能只在 h 文件中实现。)
 
   main.o: In function `main':
 
   main.cpp:(.text+0x20): undefined reference to 构造函数和析构函数
-

@@ -2,17 +2,17 @@
 
 ## web
 
-[无闻golang web教学](https://studygolang.com/subject/479)
+[无闻 golang web 教学](https://studygolang.com/subject/479)
 
 ## gopath
 
-gopath设置：`go env -w GOPATH=path to you project`
+gopath 设置：`go env -w GOPATH=path to you project`
 
-当前workspace目录：
+当前 workspace 目录：
 
 ```shell
-$ hyh in ~/developer/chat λ tree . -L 2           
-├── bin 
+$ hyh in ~/developer/chat λ tree . -L 2
+├── bin
 │   ├── chat
 │   ├── dlv
 │   ├── dlv-dap
@@ -35,7 +35,7 @@ $ hyh in ~/developer/chat λ tree . -L 2
 ```shell
 # init go.mod in your src
 cd src
-go mod init <your developement>  
+go mod init <your developement>
 
 
 # download some dependencies in your source codes

@@ -1,4 +1,4 @@
-# Python学习笔记
+# Python 学习笔记
 
 # Question
 
@@ -19,7 +19,7 @@ class TestDict(unittest.TestCase):
         d = Dict(a=1, b='test')
         self.assertEqual(d.a, 1)
         self.assertTrue(isinstance(d, dict))
-   
+
 # 运行单元测试
 python -m unittest mydict_test
 ```
@@ -36,11 +36,11 @@ pip freeze
 
 ## virtualenv
 
-创建独立的python运行环境，不影响其它python库文件及版本。
+创建独立的 python 运行环境，不影响其它 python 库文件及版本。
 
 Tutorial：https://realpython.com/python-virtual-environments-a-primer/
 
-conda创建教程：<https://blog.csdn.net/u012343179/article/details/76146815>
+conda 创建教程：<https://blog.csdn.net/u012343179/article/details/76146815>
 
 ```shell
 # 指定python版本创建环境
@@ -57,7 +57,7 @@ conda create -n name python=具体版本 其它库如numpy
 source activate name
 ```
 
-使用venv方法创建：
+使用 venv 方法创建：
 
 ```shell
 # Python 2:
@@ -71,11 +71,11 @@ python3 -m venv env
 
 https://joblib.readthedocs.io/en/latest/
 
-## 软件包管理PyPi
+## 软件包管理 PyPi
 
-使用setuptools工具，编写setup.py文件, https://pypi.org/project/setuptools/
+使用 setuptools 工具，编写 setup.py 文件, https://pypi.org/project/setuptools/
 
-1. 直接提交到pypi服务器，可以使用pip下载安装。
+1. 直接提交到 pypi 服务器，可以使用 pip 下载安装。
 2. 本地安装，只能在本地使用。http://www.cnblogs.com/streakingBird/p/4056765.html
 
 ### pip
@@ -84,30 +84,30 @@ https://joblib.readthedocs.io/en/latest/
 
 # 基本知识
 
-### “*”符号的意义
+### “\*”符号的意义
 
-单星号,将所以参数以元组(tuple)**的形式导入：
+单星号,将所以参数以元组(tuple)\*\*的形式导入：
 
 双星号，将参数以字典的形式导入
 
 ```ipython
-In [1]: def fooa(): 
-   ...:     a = 1 
-   ...:     b =2  
-   ...:     return a,b 
-   ...:                                                                         
+In [1]: def fooa():
+   ...:     a = 1
+   ...:     b =2
+   ...:     return a,b
+   ...:
 
-In [2]: def foob(a,b): 
-   ...:     print(a+b) 
-   ...:                                                                         
+In [2]: def foob(a,b):
+   ...:     print(a+b)
+   ...:
 
-In [3]: foob(*fooa())                                                           
+In [3]: foob(*fooa())
 3
 ```
 
-### python与matlab交互
+### python 与 matlab 交互
 
-- 使用matlab的数据分析计算
+- 使用 matlab 的数据分析计算
 
   ```matlab
   % save some data in a .mat
@@ -115,20 +115,20 @@ In [3]: foob(*fooa())
   S.b = [7, 8, 9; 10, 11, 12];
   M(1).c = [2, 4, 6; 8, 10, 12];
   M(2).c = [1, 3, 5; 7, 9, 11];
-  
+
   save('data.mat','a','S','M')
   ```
 
   ```python
   import scipy.io as spio
   mat = spio.loadmat('data.mat', squeeze_me=True)
-  
+
   a = mat['a'] # array
   S = mat['S'] # structure containing an array
   M = mat['M'] # array of structures
   ```
 
-### 运行python
+### 运行 python
 
 ```python
 # 当文件被直接运行时，执行function函数。当文件被导入时，不执行。
@@ -143,8 +143,8 @@ if __name__ == "__main__":
 ### 安装插件
 
 1. 安装目录功能：pip install jupyter_contrib_nbextensions
-2. 配置nbextension：jupyter contrib nbextension install --user --skip-running-check
-3. 启动jupyter notebook配置
+2. 配置 nbextension：jupyter contrib nbextension install --user --skip-running-check
+3. 启动 jupyter notebook 配置
 
 ### 添加内核
 
@@ -163,10 +163,8 @@ path/to/python3 -m pip install ipykernel
 path/to/python3 -m ipykernel install <options>
 ```
 
-
-
 # 遇到的问题
 
-- conda not found: 
+- conda not found:
 
-   export PATH=/home/joe/anaconda3/bin ：加入conda bin文件路径	
+  export PATH=/home/joe/anaconda3/bin ：加入 conda bin 文件路径

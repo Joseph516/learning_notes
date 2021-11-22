@@ -8,7 +8,7 @@
 
 - 安装插件
 
-  修改 `~/.vimrc`文件并重载 (`:source ~/.vimrc`) or restart Vim. 
+  修改 `~/.vimrc`文件并重载 (`:source ~/.vimrc`) or restart Vim.
 
   Run `:PlugInstall` to install the plugins.
 
@@ -23,18 +23,19 @@
   2.Reload vimrc (`:source ~/.vimrc`) or restart Vim
 
   3.Run `:PlugClean`. 会自动检测并清楚不在声明内的插件.
-### 主要插件 
+
+### 主要插件
 
 - [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)：代码补全。
 
-- [fzf](https://github.com/junegunn/fzf.vim)：模糊搜索工具，可以用GFiles查看git文件变化。或搭配The Silver Searcher使用Ag。
+- [fzf](https://github.com/junegunn/fzf.vim)：模糊搜索工具，可以用 GFiles 查看 git 文件变化。或搭配 The Silver Searcher 使用 Ag。
 
 - [vim-audoformat](https://github.com/chiel92/vim-autoformat)：代码风格整理。
 
-  将clang-format设置未全局格式。
+  将 clang-format 设置未全局格式。
   let g:formatterpath = ['/home/joe', '/home/joe/.clang-format']
 
-- [vim-airline](https://github.com/vim-airline/vim-airline)：vim状态栏可视化。
+- [vim-airline](https://github.com/vim-airline/vim-airline)：vim 状态栏可视化。
 
 - rainbow.：彩虹括号
 
@@ -44,13 +45,12 @@
 
 ## 基本操作
 
-### 设置缩进Indent
+### 设置缩进 Indent
 
-- set tabstop=8  //设置缩进, 注意不要有空格。
+- set tabstop=8 //设置缩进, 注意不要有空格。
 - set expantab
-- set shiftwidth=2 // 缩进2个空格
+- set shiftwidth=2 // 缩进 2 个空格
 - set autoindent // 自动缩进
 - set cindent // stricter rules for cprograms
 - set nu // 显示行号
 - set nonu // 取消显示行号
-
